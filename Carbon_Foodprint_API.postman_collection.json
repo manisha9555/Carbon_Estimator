@@ -1,0 +1,385 @@
+{
+  "info": {
+    "name": "Carbon Foodprint Estimator API",
+    "description": "Complete API collection for testing the Carbon Foodprint Estimator endpoints. This API estimates carbon footprint of dishes using AI-powered ingredient extraction.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API is running and healthy. Returns service status and version information."
+      },
+      "response": [
+        {
+          "name": "Success Response",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"status\": \"ok\",\n  \"timestamp\": \"2024-01-15T10:30:00.000Z\",\n  \"service\": \"Carbon Foodprint Estimator API\",\n  \"version\": \"1.0.0\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Estimate from Dish Name",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"Chicken Biryani\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Estimate carbon footprint from a dish name. The API will use AI to extract ingredients and calculate carbon footprint for each ingredient."
+      },
+      "response": [
+        {
+          "name": "Success Response - Chicken Biryani",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dish\": \"Chicken Biryani\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/estimate",
+              "host": ["{{base_url}}"],
+              "path": ["estimate"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"dish\": \"Chicken Biryani\",\n  \"estimated_carbon_kg\": 4.2,\n  \"ingredients\": [\n    { \"name\": \"Rice\", \"carbon_kg\": 1.1 },\n    { \"name\": \"Chicken\", \"carbon_kg\": 2.5 },\n    { \"name\": \"Spices\", \"carbon_kg\": 0.2 },\n    { \"name\": \"Oil\", \"carbon_kg\": 0.4 }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Estimate from Dish Name - Pizza",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"Pepperoni Pizza\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Test with a different dish to see how the AI extracts different ingredients."
+      },
+      "response": []
+    },
+    {
+      "name": "Estimate from Dish Name - Salad",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"Caesar Salad\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Test with a vegetarian dish to see different carbon footprint calculations."
+      },
+      "response": []
+    },
+    {
+      "name": "Estimate from Dish Name - Pasta",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"Spaghetti Carbonara\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Test with an Italian dish to see ingredient extraction."
+      },
+      "response": []
+    },
+    {
+      "name": "Estimate from Image",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate/image",
+          "host": ["{{base_url}}"],
+          "path": ["estimate", "image"]
+        },
+        "description": "Upload an image of a dish to estimate carbon footprint. The API will use computer vision to identify ingredients. Supports JPEG, JPG, PNG up to 200MB."
+      },
+      "response": [
+        {
+          "name": "Success Response - Image",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/estimate/image",
+              "host": ["{{base_url}}"],
+              "path": ["estimate", "image"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"dish\": \"Dish from Image\",\n  \"estimated_carbon_kg\": 3.8,\n  \"ingredients\": [\n    { \"name\": \"Rice\", \"carbon_kg\": 1.1 },\n    { \"name\": \"Vegetables\", \"carbon_kg\": 0.6 },\n    { \"name\": \"Spices\", \"carbon_kg\": 0.2 },\n    { \"name\": \"Oil\", \"carbon_kg\": 0.4 }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Error Handling - Empty Dish Name",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Test error handling when dish name is empty. Should return a 400 Bad Request error."
+      },
+      "response": []
+    },
+    {
+      "name": "Error Handling - Missing Content-Type",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"dish\": \"Chicken Biryani\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate",
+          "host": ["{{base_url}}"],
+          "path": ["estimate"]
+        },
+        "description": "Test error handling when Content-Type header is missing. Should return a validation error."
+      },
+      "response": []
+    },
+    {
+      "name": "Error Handling - Invalid File Type",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/estimate/image",
+          "host": ["{{base_url}}"],
+          "path": ["estimate", "image"]
+        },
+        "description": "Test error handling when uploading an invalid file type (e.g., .txt file). Should return a 400 Bad Request error."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string",
+      "description": "Base URL for the Carbon Foodprint Estimator API"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Log request details for debugging",
+          "console.log('Making request to: ' + pm.request.url);",
+          "console.log('Method: ' + pm.request.method);",
+          "console.log('Headers: ' + JSON.stringify(pm.request.headers.toObject()));"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Basic response validation",
+          "pm.test('Status code is 200', function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "pm.test('Response has JSON content type', function () {",
+          "    pm.response.to.have.header('Content-Type');",
+          "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+          "});",
+          "",
+          "// For estimate endpoints, validate response structure",
+          "if (pm.request.url.path.includes('estimate') && pm.request.method === 'POST') {",
+          "    pm.test('Response has correct structure', function () {",
+          "        const response = pm.response.json();",
+          "        pm.expect(response).to.have.property('dish');",
+          "        pm.expect(response).to.have.property('estimated_carbon_kg');",
+          "        pm.expect(response).to.have.property('ingredients');",
+          "        pm.expect(response.ingredients).to.be.an('array');",
+          "    });",
+          "}",
+          "",
+          "// Log response for debugging",
+          "console.log('Response status: ' + pm.response.status);",
+          "console.log('Response body: ' + pm.response.text());"
+        ]
+      }
+    }
+  ]
+}
