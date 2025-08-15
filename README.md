@@ -221,29 +221,3 @@ docker run -p 3000:3000 --env-file .env carbon-foodprint-api
 2. Configure proper `ALLOWED_ORIGINS`
 3. Use production-grade OpenAI API keys
 4. Set up proper logging and monitoring
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Built with [NestJS](https://nestjs.com/)
-- Powered by [OpenAI](https://openai.com/)
-- Inspired by sustainability and environmental consciousness
-
-## 📞 Support
-
-For questions or issues, please open an issue on GitHub or contact the development team.
-
----
-
-**Built with ❤️ for a sustainable future**
